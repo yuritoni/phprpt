@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{0E315C5D-8A9A-43D6-9D7B-A6F34F1E1A80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CrystalReportsBridge</RootNamespace>
+    <AssemblyName>CrystalReportsBridge</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Optimize>true</Optimize><OutputPath>bin\</OutputPath><DefineConstants>TRACE</DefineConstants><DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" /><Reference Include="System.Core" /><Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" /><Reference Include="System.Web" />
+    <Reference Include="System.Web.Http"><HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath><Private>True</Private></Reference>
+    <Reference Include="System.Net.Http.Formatting"><HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath><Private>True</Private></Reference>
+    <Reference Include="System.Xml" /><Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Newtonsoft.Json"><HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath><Private>True</Private></Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine" />
+    <Reference Include="CrystalDecisions.Shared" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc" />
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel" />
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs"><DependentUpon>Global.asax</DependentUpon></Compile>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HealthController.cs" /><Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Infrastructure\ApiKeyAttribute.cs" /><Compile Include="Infrastructure\ReportSession.cs" />
+    <Compile Include="Infrastructure\ReportSessionStore.cs" /><Compile Include="Infrastructure\PathPolicy.cs" />
+    <Compile Include="Models\Requests.cs" />
+    <Content Include="Global.asax" /><Content Include="Web.config" /><None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

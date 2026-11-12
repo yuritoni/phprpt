@@ -1,0 +1,14 @@
+{
+  "name": "yusri/crystal-reports-php",
+  "description": "PHP 8.4 client library for a Windows-hosted SAP Crystal Reports bridge",
+  "type": "library",
+  "license": "proprietary",
+  "require": {
+    "php": "^8.4",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^7.9"
+  },
+  "autoload": {"psr-4": {"CrystalReports\\": "src/"}},
+  "autoload-dev": {"psr-4": {"CrystalReports\\Tests\\": "tests/"}},
+  "suggest": {"ext-fileinfo": "Useful for validating downloaded report files"}
+}
